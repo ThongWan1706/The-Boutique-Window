@@ -83,7 +83,7 @@ public class ProfileSetupManager : MonoBehaviour
                 else
                 {
                     Debug.Log("Player profile saved successfully!");
-                    SceneManager.LoadScene("SampleScene"); 
+                    SceneManager.LoadScene("GameScene"); 
                 }
             });
     }

@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:180488896930:ios:c761b27070f258d7ca32fb</string>
+	<key>DATABASE_URL</key>
+	<string>https://the-boutique-window-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>

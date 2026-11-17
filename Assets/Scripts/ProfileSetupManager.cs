@@ -36,7 +36,7 @@ public class ProfileSetupManager : MonoBehaviour
             return;
         }
 
-        //Parse the birthday text (Expected format: YYYY-MM-DD)
+        //Parse the birthday text (Expected format: dd-MM-yyyy)
         string dateFormat = "dd-MM-yyyy";
         
         if (!DateTime.TryParseExact(birthdayInput.text.Trim(), dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime parsedBirthday))
@@ -46,8 +46,8 @@ public class ProfileSetupManager : MonoBehaviour
             return;
         }
 
-        // Convert birthday string to a long timestamp
-        long birthdayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(); 
+        // Convert parsed birthday to a long timestamp
+        long birthdayTimestamp = ((DateTimeOffset)parsedBirthday).ToUnixTimeMilliseconds(); 
         long currentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
         // Initialize an empty or default starting cart for the AR game screenshots
@@ -63,7 +63,7 @@ public class ProfileSetupManager : MonoBehaviour
             UserDataHolder.password,
             playerNameInput.text,
             birthdayTimestamp,
-            AvatarSelector.selectedAvatar,
+            AvatarSelector.selectedAvatarID.ToString(),
             "",
             initialCart
         );

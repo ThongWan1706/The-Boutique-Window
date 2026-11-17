@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "180488896930",
+    "project_id": "the-boutique-window",
+    "storage_bucket": "the-boutique-window.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180488896930:ios:c761b27070f258d7ca32fb",
+        "android_client_info": {
+          "package_name": "com.SyncSphere.TheBoutiqueWindow"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFj0t71kArF22qlbGQKFkumcrj1iscttE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

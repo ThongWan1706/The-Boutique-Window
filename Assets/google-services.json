@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "180488896930",
+    "firebase_url": "https://the-boutique-window-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "the-boutique-window",
+    "storage_bucket": "the-boutique-window.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180488896930:android:ace7733ed7558a8aca32fb",
+        "android_client_info": {
+          "package_name": "com.SyncSphere.TheBoutiqueWindow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXGF-DhzsZpN58CarFgST18ukbD-DzLsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

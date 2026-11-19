@@ -8,22 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:180488896930:ios:c761b27070f258d7ca32fb",
+        "mobilesdk_app_id": "1:180488896930:android:ace7733ed7558a8aca32fb",
         "android_client_info": {
           "package_name": "com.SyncSphere.TheBoutiqueWindow"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAFj0t71kArF22qlbGQKFkumcrj1iscttE"
+          "current_key": "AIzaSyCXGF-DhzsZpN58CarFgST18ukbD-DzLsU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
         }
       }
     }

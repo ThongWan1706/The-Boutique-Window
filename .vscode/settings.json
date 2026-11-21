@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "The-Boutique-Window.slnx"
+    "dotnet.defaultSolution": "The Boutique Window.slnx"
 }

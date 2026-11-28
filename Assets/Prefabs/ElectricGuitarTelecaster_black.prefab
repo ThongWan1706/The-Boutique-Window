@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 819512658343712359}
   - component: {fileID: 3542438247863905457}
   - component: {fileID: 990387289059972954}
+  - component: {fileID: -5519875985722215089}
   m_Layer: 0
   m_Name: ElectricGuitarTelecaster_black
   m_TagString: Untagged
@@ -238,6 +239,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4147339, y: 0.087873936, z: 1.1853638}
   m_Center: {x: 0.004852295, y: 0.004877731, z: 0.032928467}
+--- !u!114 &-5519875985722215089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504749978941172743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 1d0db7d2a50a42b4597ea56547c5ff93, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &6418502123212921373
 GameObject:
   m_ObjectHideFlags: 0

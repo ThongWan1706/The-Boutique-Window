@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2424267449545879491}
   - component: {fileID: 565907426774039658}
   - component: {fileID: 4447004899060781918}
+  - component: {fileID: -6601454276120665641}
   m_Layer: 0
   m_Name: WhitePiano
   m_TagString: Untagged
@@ -238,6 +239,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9180298, y: 1.6045668, z: 1.9843102}
   m_Center: {x: 0.016784668, y: 0.78369784, z: 0.07227898}
+--- !u!114 &-6601454276120665641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625583411956387671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 78b11d0d385e868498ce97fab823cd27, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &7207583673009948789
 GameObject:
   m_ObjectHideFlags: 0

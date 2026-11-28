@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 159143650727938774}
   - component: {fileID: 6561210362130672988}
   - component: {fileID: 1311033637836963500}
+  - component: {fileID: -4333199882879060341}
   m_Layer: 0
   m_Name: ElectronicPiano
   m_TagString: Untagged
@@ -239,6 +240,23 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &-4333199882879060341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515764034312022086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 78b11d0d385e868498ce97fab823cd27, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &4060051082970806146
 GameObject:
   m_ObjectHideFlags: 0

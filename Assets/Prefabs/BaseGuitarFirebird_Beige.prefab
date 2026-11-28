@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1277532308095112860}
   - component: {fileID: 8349129160167001483}
   - component: {fileID: 1277407942783237362}
+  - component: {fileID: 4740242153670807711}
   m_Layer: 0
   m_Name: BaseGuitarFirebird_Beige
   m_TagString: Untagged
@@ -269,6 +270,23 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &4740242153670807711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936673850983522482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 1d0db7d2a50a42b4597ea56547c5ff93, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1001 &8762826189092877761
 PrefabInstance:
   m_ObjectHideFlags: 0

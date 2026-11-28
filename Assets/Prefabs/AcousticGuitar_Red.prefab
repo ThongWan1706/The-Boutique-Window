@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7554650367216867650}
   - component: {fileID: 8489892535710304095}
   - component: {fileID: 3406365140222462039}
+  - component: {fileID: 7970134591429087242}
   m_Layer: 0
   m_Name: AcousticGuitar_Red
   m_TagString: Untagged
@@ -239,6 +240,23 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &7970134591429087242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326577504684717552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 50e4cd0486d667a438586aa4b36d9f56, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &8450449140467338197
 GameObject:
   m_ObjectHideFlags: 0

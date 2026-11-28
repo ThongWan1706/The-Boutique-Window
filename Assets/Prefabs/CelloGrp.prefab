@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8095131011284707690}
   - component: {fileID: 782229986237613334}
   - component: {fileID: 3520493790350898697}
+  - component: {fileID: -6383562825562626801}
   m_Layer: 0
   m_Name: CelloGrp
   m_TagString: Untagged
@@ -302,6 +303,23 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &-6383562825562626801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026636133210389211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 281d5196c6282ca4ba89942952e75212, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &5545579217241452345
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4616212708255063876}
   - component: {fileID: 5665209325591566198}
   - component: {fileID: 1970218792267769350}
+  - component: {fileID: 1292908115659723278}
   m_Layer: 0
   m_Name: ElectricGuitarTelecaster_red
   m_TagString: Untagged
@@ -238,6 +239,23 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &1292908115659723278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931368749632263288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 1d0db7d2a50a42b4597ea56547c5ff93, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &7828701416382391117
 GameObject:
   m_ObjectHideFlags: 0

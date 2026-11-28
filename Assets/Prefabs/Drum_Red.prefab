@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8704917381480589131}
   - component: {fileID: 8670770918671640404}
   - component: {fileID: 7457216300275565686}
+  - component: {fileID: -7768040169951850320}
   m_Layer: 0
   m_Name: Drum_Red
   m_TagString: Untagged
@@ -241,6 +242,23 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &-7768040169951850320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994764717507844347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: e66e451c8221c2b428f19e794b3ae8a4, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1 &4886816603752945213
 GameObject:
   m_ObjectHideFlags: 0

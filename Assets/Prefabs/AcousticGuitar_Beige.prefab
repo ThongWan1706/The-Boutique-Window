@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4577353465301971288}
   - component: {fileID: 3854792615294010911}
   - component: {fileID: 8335814155119608257}
+  - component: {fileID: 5271876999020303290}
   m_Layer: 0
   m_Name: AcousticGuitar_Beige
   m_TagString: Untagged
@@ -270,6 +271,23 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &5271876999020303290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550980982967388570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 50e4cd0486d667a438586aa4b36d9f56, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1001 &707091374050028339
 PrefabInstance:
   m_ObjectHideFlags: 0

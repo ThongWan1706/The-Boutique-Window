@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1430861854628307931}
   - component: {fileID: 6357360885667197122}
   - component: {fileID: 7855530981315912462}
+  - component: {fileID: -1790814348183247428}
   m_Layer: 0
   m_Name: ViolinGrp
   m_TagString: Untagged
@@ -270,6 +271,23 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 0
   m_ElasticBreakLimit: 0.5
+--- !u!114 &-1790814348183247428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126082681468307669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901005be079303c4da9d4f45e3e94815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSound
+  pickUpSound: {fileID: 8300000, guid: 23c9c6e0db0dd5142b67567a97e911e1, type: 3}
+  volume: 2
+  musicNoteVFX: {fileID: 0}
+  vfxDuration: 2
+  stopVFXWhenReleased: 1
 --- !u!1001 &6920202115116071223
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,0 +1,65 @@
+using System;
+using System.IO;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+// Put this on the row prefab (one item in the cart list).
+public class CartItemRows : MonoBehaviour
+{
+    public Toggle toggle;          // The tick box on the left
+    public RawImage thumbnail;     // The photo
+    public TMP_Text nameText;      // e.g. "My Setup 1"
+    public TMP_Text dateText;      // When the photo was taken
+    public Button deleteButton;    // Optional: removes just this item
+
+    public CartItem Item { get; private set; }
+    public bool IsSelected => toggle != null && toggle.isOn;
+
+    Texture2D loadedTexture;
+
+    public void Setup(CartItem item, Action<CartItemRow> onToggled, Action<CartItemRow> onDelete)
+    {
+        Item = item;
+
+        nameText.text = item.sceneName;
+        dateText.text = DateTimeOffset.FromUnixTimeMilliseconds(item.timestamp)
+                                      .ToLocalTime()
+                                      .ToString("d MMM yyyy, h:mm tt");
+
+        LoadThumbnail(item.imagePath);
+
+        toggle.SetIsOnWithoutNotify(false);
+        toggle.onValueChanged.AddListener(_ => onToggled(this));
+
+        if (deleteButton != null)
+            deleteButton.onClick.AddListener(() => onDelete(this));
+    }
+
+    public void SetSelected(bool selected)
+    {
+        toggle.SetIsOnWithoutNotify(selected);
+    }
+
+    void LoadThumbnail(string path)
+    {
+        if (string.IsNullOrEmpty(path) || !File.Exists(path))
+            return;
+
+        loadedTexture = new Texture2D(2, 2);
+        loadedTexture.LoadImage(File.ReadAllBytes(path));
+        thumbnail.texture = loadedTexture;
+
+        // Crop the middle of the photo into a square so it isn't stretched
+        float aspect = (float)loadedTexture.width / loadedTexture.height;
+        thumbnail.uvRect = aspect > 1f
+            ? new Rect((1f - 1f / aspect) / 2f, 0f, 1f / aspect, 1f)
+            : new Rect(0f, (1f - aspect) / 2f, 1f, aspect);
+    }
+
+    void OnDestroy()
+    {
+        if (loadedTexture != null)
+            Destroy(loadedTexture);
+    }
+}

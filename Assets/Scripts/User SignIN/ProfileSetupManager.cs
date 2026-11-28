@@ -5,27 +5,27 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Firebase.Database;
 using Firebase.Extensions;
-
+ 
 public class ProfileSetupManager : MonoBehaviour
 {
     public TMP_InputField playerNameInput;
     public TMP_InputField birthdayInput; 
     public GameObject errorPopupPanel; 
     public TMP_Text errormessage; 
-
+ 
     public void CloseErrorPopup()
     {
         if (errorPopupPanel != null)
             errorPopupPanel.SetActive(false);
     }
-
+ 
     //For the Previous Button
     public void undoScene()
     {
         Debug.Log("Previous Button Clicked!");
         SceneManager.LoadScene("SignUp");
     }
-
+ 
     //For the player to submit their player game profile
     public void SubmitProfile()
     {
@@ -35,7 +35,7 @@ public class ProfileSetupManager : MonoBehaviour
             if (errorPopupPanel != null) errorPopupPanel.SetActive(true);
             return;
         }
-
+ 
         //Parse the birthday text (Expected format: dd-MM-yyyy)
         string dateFormat = "dd-MM-yyyy";
         
@@ -45,17 +45,13 @@ public class ProfileSetupManager : MonoBehaviour
             if (errorPopupPanel != null) errorPopupPanel.SetActive(true);
             return;
         }
-
+ 
         // Convert parsed birthday to a long timestamp
         long birthdayTimestamp = ((DateTimeOffset)parsedBirthday).ToUnixTimeMilliseconds(); 
-        long currentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-
-        // Initialize an empty or default starting cart for the AR game screenshots
-        List<CartItem> initialCart = new List<CartItem>
-        {
-            new CartItem("AR_Initial_Scene", "Screenshots/default.png", currentTimestamp)
-        };
-
+ 
+        // Start with an empty cart
+        List<CartItem> initialCart = new List<CartItem>();
+ 
         // Construct the full Player JSON object 
         PlayerData newPlayer = new PlayerData(
             UserDataHolder.userId,
@@ -64,12 +60,12 @@ public class ProfileSetupManager : MonoBehaviour
             playerNameInput.text,
             birthdayTimestamp,
             AvatarSelector.selectedAvatarID.ToString(),
-            "",
+            new List<string>(),   // No promo codes yet
             initialCart
         );
-
+ 
         string json = JsonUtility.ToJson(newPlayer);
-
+ 
         // Save to Firebase Database under the user's ID
         FirebaseDatabase.DefaultInstance.GetReference("players")
             .Child(UserDataHolder.userId)

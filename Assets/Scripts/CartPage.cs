@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Put this on an object that stays switched on (e.g. "UI"), and drag the cart panel into "panel".
-// Hook CartButton's On Click () to CartPage.Open, and the back arrow to CartPage.Close.
 public class CartPage : MonoBehaviour
 {
     [Header("Panel")]
@@ -14,7 +12,7 @@ public class CartPage : MonoBehaviour
 
     [Header("List")]
     public Transform listContent;
-    public CartItemRow rowPrefab;
+    public CartItemRows rowPrefab;
     public GameObject emptyMessage;
 
     [Header("Bottom bar")]
@@ -31,23 +29,23 @@ public class CartPage : MonoBehaviour
     public string promoReminder = "Your promo codes: {0}\nUse them when you buy items at the Swee Lee shop!";
     public UnityEvent<List<CartItem>> onCheckout;
 
-    readonly List<CartItemRow> rows = new List<CartItemRow>();
+    readonly List<CartItemRows> rows = new List<CartItemRows>();
 
     void Start()
     {
         selectAllToggle.onValueChanged.AddListener(SelectAll);
         checkoutButton.onClick.AddListener(Checkout);
 
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnCartChanged += RebuildIfOpen;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnCartChanged += RebuildIfOpen;
 
         panel.SetActive(false);
     }
 
     void OnDestroy()
     {
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnCartChanged -= RebuildIfOpen;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnCartChanged -= RebuildIfOpen;
     }
 
     public void Open()
@@ -73,12 +71,12 @@ public class CartPage : MonoBehaviour
             Destroy(row.gameObject);
         rows.Clear();
 
-        var cart = PlayerDataManager.Instance.Data.cart;
+        var cart = playerDataManager.Instance.Data.cart;
 
         // Newest photo at the top
         for (int i = cart.Count - 1; i >= 0; i--)
         {
-            CartItemRow row = Instantiate(rowPrefab, listContent);
+            CartItemRows row = Instantiate(rowPrefab, listContent);
             row.Setup(cart[i], _ => UpdateSummary(), DeleteOne);
             rows.Add(row);
         }
@@ -109,9 +107,9 @@ public class CartPage : MonoBehaviour
         UpdateSummary();
     }
 
-    void DeleteOne(CartItemRow row)
+    void DeleteOne(CartItemRows row)
     {
-        PlayerDataManager.Instance.RemoveCartItems(new List<CartItem> { row.Item }, deleteImagesOnRemove);
+        playerDataManager.Instance.RemoveCartItems(new List<CartItem> { row.Item }, deleteImagesOnRemove);
         // The cart-changed event rebuilds the list
     }
 
@@ -127,13 +125,13 @@ public class CartPage : MonoBehaviour
 
         onCheckout?.Invoke(selectedItems);
 
-        PlayerDataManager.Instance.RemoveCartItems(selectedItems, deleteImagesOnRemove);
+        playerDataManager.Instance.RemoveCartItems(selectedItems, deleteImagesOnRemove);
 
         if (popup != null)
         {
             string message = string.Format(checkoutMessage, selectedItems.Count);
 
-            var codes = PlayerDataManager.Instance.Data.promoCodes;
+            var codes = playerDataManager.Instance.Data.promoCodes;
             if (codes.Count > 0)
                 message += "\n\n" + string.Format(promoReminder, string.Join(", ", codes));
 

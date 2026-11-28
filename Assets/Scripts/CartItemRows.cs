@@ -10,22 +10,25 @@ public class CartItemRows : MonoBehaviour
     public Toggle toggle;          // The tick box on the left
     public RawImage thumbnail;     // The photo
     public TMP_Text nameText;      // e.g. "My Setup 1"
-    public TMP_Text dateText;      // When the photo was taken
-    public Button deleteButton;    // Optional: removes just this item
+    public TMP_Text itemsText;     // What was placed, e.g. "Acoustic Guitar x2, Drums"
+    public Button deleteButton;
 
     public CartItem Item { get; private set; }
     public bool IsSelected => toggle != null && toggle.isOn;
 
     Texture2D loadedTexture;
 
-    public void Setup(CartItem item, Action<CartItemRow> onToggled, Action<CartItemRow> onDelete)
+    public void Setup(CartItem item, Action<CartItemRows> onToggled, Action<CartItemRows> onDelete)
     {
         Item = item;
 
         nameText.text = item.sceneName;
-        dateText.text = DateTimeOffset.FromUnixTimeMilliseconds(item.timestamp)
-                                      .ToLocalTime()
-                                      .ToString("d MMM yyyy, h:mm tt");
+
+        // Show the placed items, or a message if there were none
+        if (item.items != null && item.items.Count > 0)
+            itemsText.text = string.Join(", ", item.items);
+        else
+            itemsText.text = "No items placed";
 
         LoadThumbnail(item.imagePath);
 

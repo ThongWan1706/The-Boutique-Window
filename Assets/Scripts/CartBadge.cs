@@ -9,8 +9,8 @@ public class CartBadge : MonoBehaviour
 
     void Start()
     {
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnCartChanged += Refresh;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnCartChanged += Refresh;
         Refresh();
     }
 
@@ -21,13 +21,13 @@ public class CartBadge : MonoBehaviour
 
     void OnDestroy()
     {
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnCartChanged -= Refresh;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnCartChanged -= Refresh;
     }
 
     void Refresh()
     {
-        var manager = PlayerDataManager.Instance;
+        var manager = playerDataManager.Instance;
         int count = (manager != null && manager.Data != null) ? manager.Data.cart.Count : 0;
 
         if (badge != null)

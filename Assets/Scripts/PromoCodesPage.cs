@@ -12,15 +12,15 @@ public class PromoCodesPage : MonoBehaviour
 
     void Start()
     {
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnPromoCodesChanged += Refresh;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnPromoCodesChanged += Refresh;
         panel.SetActive(false);
     }
 
     void OnDestroy()
     {
-        if (PlayerDataManager.Instance != null)
-            PlayerDataManager.Instance.OnPromoCodesChanged -= Refresh;
+        if (playerDataManager.Instance != null)
+            playerDataManager.Instance.OnPromoCodesChanged -= Refresh;
     }
 
     public void Open()
@@ -36,7 +36,7 @@ public class PromoCodesPage : MonoBehaviour
 
     void Refresh()
     {
-        var codes = PlayerDataManager.Instance.Data.promoCodes;
+        var codes = playerDataManager.Instance.Data.promoCodes;
         codesText.text = codes.Count == 0
             ? emptyText
             : "• " + string.Join("\n• ", codes) + footer;

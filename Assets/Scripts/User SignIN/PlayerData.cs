@@ -4,17 +4,19 @@ using System.Collections.Generic;
 [Serializable]
 public class CartItem
 {
-    public string id;          // Unique id for this photo, e.g. "3f9c1a..."
-    public string sceneName;   // Name shown in the cart, e.g. "My Setup 1"
-    public string imagePath;   // Where the screenshot PNG is saved on the device
-    public long timestamp;     // When the photo was taken (Unix time in milliseconds)
+    public string id;          // Id for the photo
+    public string sceneName;   // Name shown in the cart
+    public string imagePath;   // Screenshot PNG is saved on the device
+    public long timestamp;     // When the photo was taken
+    public List<string> items; // What was placed in the scene, e.g. "Acoustic Guitar x2", "Drums"
 
-    public CartItem(string sceneName, string imagePath, long timestamp)
+    public CartItem(string sceneName, string imagePath, long timestamp, List<string> items)
     {
         this.id = Guid.NewGuid().ToString("N");
         this.sceneName = sceneName;
         this.imagePath = imagePath;
         this.timestamp = timestamp;
+        this.items = items;
     }
 }
 
@@ -43,15 +45,19 @@ public class PlayerData
         EnsureLists();
     }
 
-    // Data loaded from JSON or a database can come back with empty (null) lists. 
+    // Data loaded from JSON or a database can come back with empty (null) lists. This fixes that.
     public void EnsureLists()
     {
         if (promoCodes == null) promoCodes = new List<string>();
         if (cart == null) cart = new List<CartItem>();
 
-        // Older cart items saved before ids existed get one now
+        // Older cart items saved before ids / item lists existed get them now
         foreach (var item in cart)
+        {
             if (string.IsNullOrEmpty(item.id))
                 item.id = Guid.NewGuid().ToString("N");
+            if (item.items == null)
+                item.items = new List<string>();
+        }
     }
 }

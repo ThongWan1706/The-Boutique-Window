@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d474ea3b0f9ff460ea7db68b906168a1
+timeCreated: 1516988899
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105933
+  packageName: Floating Music Note Particle System
+  packageVersion: 1.0
+  assetPath: Assets/MusicNotes_ParticleSystem/DemoScene/DemoScene.unity
+  uploadId: 226245

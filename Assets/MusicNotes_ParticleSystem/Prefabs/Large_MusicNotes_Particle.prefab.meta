@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7d9bb5a3a27424895a955fd720254612
+timeCreated: 1511802548
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105933
+  packageName: Floating Music Note Particle System
+  packageVersion: 1.0
+  assetPath: Assets/MusicNotes_ParticleSystem/Prefabs/Large_MusicNotes_Particle.prefab
+  uploadId: 226245

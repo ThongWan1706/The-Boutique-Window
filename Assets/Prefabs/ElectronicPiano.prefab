@@ -254,8 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveSound
   pickUpSound: {fileID: 8300000, guid: 78b11d0d385e868498ce97fab823cd27, type: 3}
   volume: 2
-  musicNoteVFX: {fileID: 0}
-  vfxDuration: 2
+  musicNoteVFX: {fileID: 198580353396327668, guid: fa72bb4991c38481eb7e4743c43b8bae, type: 3}
+  vfxOffset: {x: 0, y: 0.5, z: 0}
+  vfxDuration: 5
   stopVFXWhenReleased: 1
 --- !u!1 &4060051082970806146
 GameObject:

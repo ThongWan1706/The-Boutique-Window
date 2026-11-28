@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cc5c1327f1bd409da77cb930edd5337
+timeCreated: 1511801391
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105933
+  packageName: Floating Music Note Particle System
+  packageVersion: 1.0
+  assetPath: Assets/MusicNotes_ParticleSystem/Material/MusicNotes_Material.mat
+  uploadId: 226245

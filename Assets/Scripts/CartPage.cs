@@ -48,6 +48,7 @@ public class CartPage : MonoBehaviour
     public void Close()
     {
         cartPanel.SetActive(false);
+        ShowRows();
     }
 
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-using UnityEngine;
 
 public class AvatarSelector : MonoBehaviour
 {

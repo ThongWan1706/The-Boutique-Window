@@ -11,8 +11,9 @@ public class MoveSound : MonoBehaviour
     public float volume = 1f;
 
     [Header("Music Note VFX")]
-    public ParticleSystem musicNoteVFX;   // Drag the music note particle system (a child of this item) here
-    public float vfxDuration = 2f;        // How long the notes keep coming out after pickup
+    public ParticleSystem musicNoteVFX;     // You can drag the particle prefab straight from the Project window
+    public Vector3 vfxOffset = new Vector3(0f, 0.5f, 0f); // Where the notes appear, compared to the item (0.5 = a bit above it)
+    public float vfxDuration = 2f;          // How long the notes keep coming out after pickup
     public bool stopVFXWhenReleased = false; // Tick this if the notes should stop as soon as the item is let go
 
     XRGrabInteractable grabInteractable;
@@ -29,9 +30,19 @@ public class MoveSound : MonoBehaviour
         speaker.spatialBlend = 1f;
         speaker.volume = volume;
 
-        // Make sure the notes don't play when the game starts
         if (musicNoteVFX != null)
+        {
+            // If the VFX is a prefab from the Project window (not inside this item),
+            // make a copy of it and attach it to this item
+            if (!musicNoteVFX.gameObject.scene.IsValid())
+            {
+                musicNoteVFX = Instantiate(musicNoteVFX, transform);
+                musicNoteVFX.transform.localPosition = vfxOffset;
+            }
+
+            // Make sure the notes don't play when the item first appears
             musicNoteVFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 
     // When the item is turned on
@@ -54,7 +65,7 @@ public class MoveSound : MonoBehaviour
         }
     }
 
-    // Every time the player picks up the item [Play sound and vfx]
+    // Every time the player picks up the item
     void OnPickedUp(SelectEnterEventArgs args)
     {
         if (pickUpSound != null)
@@ -63,7 +74,7 @@ public class MoveSound : MonoBehaviour
         PlayVFX();
     }
 
-    // Every time the player lets go of the item [Stop sound and vfx]
+    // Every time the player lets go of the item
     void OnReleased(SelectExitEventArgs args)
     {
         if (stopVFXWhenReleased)

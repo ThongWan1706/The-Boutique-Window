@@ -285,8 +285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveSound
   pickUpSound: {fileID: 8300000, guid: 50e4cd0486d667a438586aa4b36d9f56, type: 3}
   volume: 2
-  musicNoteVFX: {fileID: 0}
-  vfxDuration: 2
+  musicNoteVFX: {fileID: 198580353396327668, guid: fa72bb4991c38481eb7e4743c43b8bae, type: 3}
+  vfxOffset: {x: 0, y: 0.5, z: 0}
+  vfxDuration: 5
   stopVFXWhenReleased: 1
 --- !u!1001 &707091374050028339
 PrefabInstance:

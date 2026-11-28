@@ -1,141 +1,157 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CartPage : MonoBehaviour
 {
-    [Header("Panel")]
-    public GameObject panel;
+    [Header("Cart page")]
+    public GameObject cartPanel;
     public TMP_Text titleText;
-
-    [Header("List")]
-    public Transform listContent;
-    public CartItemRows rowPrefab;
     public GameObject emptyMessage;
 
-    [Header("Bottom bar")]
-    public Toggle selectAllToggle;
+    [Header("List of photos")]
+    public Transform content;
+    public CartItemRows rowPrefab; 
+
+    [Header("Check out")]
     public Button checkoutButton;
-    public TMP_Text checkoutButtonText;
-
-    [Header("Checkout")]
+    public TMP_Text checkoutText;
     public PopupMessage popup;
-    public bool deleteImagesOnRemove = true;
-    [TextArea]
-    public string checkoutMessage = "Checked out {0} item(s)!";
-    [TextArea]
-    public string promoReminder = "Your promo codes: {0}\nUse them when you buy items at the Swee Lee shop!";
-    public UnityEvent<List<CartItem>> onCheckout;
 
-    readonly List<CartItemRows> rows = new List<CartItemRows>();
+    // All the rows that are on screen
+    List<CartItemRows> rows = new List<CartItemRows>();
+
 
     void Start()
     {
-        selectAllToggle.onValueChanged.AddListener(SelectAll);
-        checkoutButton.onClick.AddListener(Checkout);
+        // When the Check Out button is pressed, run CheckOut()
+        checkoutButton.onClick.AddListener(CheckOut);
 
-        if (playerDataManager.Instance != null)
-            playerDataManager.Instance.OnCartChanged += RebuildIfOpen;
+        // When the cart changes (photo added or removed), refresh the list
+        playerDataManager.Instance.OnCartChanged += RefreshIfOpen;
 
-        panel.SetActive(false);
+        // The cart is hidden when the game starts
+        cartPanel.SetActive(false);
     }
 
-    void OnDestroy()
-    {
-        if (playerDataManager.Instance != null)
-            playerDataManager.Instance.OnCartChanged -= RebuildIfOpen;
-    }
 
+    // Open up the cart panel
     public void Open()
     {
-        panel.SetActive(true);
-        Rebuild();
+        cartPanel.SetActive(true);
+        ShowRows();
     }
 
+
+    // Close the cart panel
     public void Close()
     {
-        panel.SetActive(false);
+        cartPanel.SetActive(false);
     }
 
-    void RebuildIfOpen()
+
+    // Refresh the list, but only if the cart page is open
+    void RefreshIfOpen()
     {
-        if (panel.activeSelf)
-            Rebuild();
+        if (cartPanel.activeSelf)
+            ShowRows();
     }
 
-    void Rebuild()
+
+    // Removes the old rows and makes a new row for each photo in the cart
+    void ShowRows()
     {
-        foreach (var row in rows)
-            Destroy(row.gameObject);
+        //Remove the old rows
+        foreach (CartItemRows oldRow in rows)
+            Destroy(oldRow.gameObject);
         rows.Clear();
 
-        var cart = playerDataManager.Instance.Data.cart;
+        //Make a new row for each photo (newest photo at the top)
+        List<CartItem> cart = playerDataManager.Instance.Data.cart;
 
-        // Newest photo at the top
         for (int i = cart.Count - 1; i >= 0; i--)
         {
-            CartItemRows row = Instantiate(rowPrefab, listContent);
-            row.Setup(cart[i], _ => UpdateSummary(), DeleteOne);
-            rows.Add(row);
+            CartItemRows newRow = Instantiate(rowPrefab, content);
+            newRow.Setup(cart[i], OnRowTicked, DeleteRow);
+            rows.Add(newRow);
         }
 
-        if (emptyMessage != null)
-            emptyMessage.SetActive(cart.Count == 0);
+        //Show "Your cart is empty!" only when there are no photos
+        emptyMessage.SetActive(cart.Count == 0);
 
-        UpdateSummary();
+        //Update the title and the Check Out button
+        UpdateTexts();
     }
 
-    void UpdateSummary()
+    void UpdateTexts()
     {
-        int selected = rows.FindAll(r => r.IsSelected).Count;
+        int tickedCount = CountTickedRows();
 
-        if (titleText != null)
-            titleText.text = $"Shopping Cart ({rows.Count})";
+        titleText.text = "Shopping Cart (" + rows.Count + ")";
+        checkoutText.text = "Check Out (" + tickedCount + ")";
 
-        checkoutButtonText.text = $"Check Out ({selected})";
-        checkoutButton.interactable = selected > 0;
-
-        selectAllToggle.SetIsOnWithoutNotify(rows.Count > 0 && selected == rows.Count);
+        // The Check Out button only works when at least one photo is ticked
+        checkoutButton.interactable = tickedCount > 0;
     }
 
-    void SelectAll(bool on)
-    {
-        foreach (var row in rows)
-            row.SetSelected(on);
-        UpdateSummary();
-    }
 
-    void DeleteOne(CartItemRows row)
+    // Counts how many rows the player has ticked
+    int CountTickedRows()
     {
-        playerDataManager.Instance.RemoveCartItems(new List<CartItem> { row.Item }, deleteImagesOnRemove);
-        // The cart-changed event rebuilds the list
-    }
-
-    void Checkout()
-    {
-        var selectedItems = new List<CartItem>();
-        foreach (var row in rows)
+        int count = 0;
+        foreach (CartItemRows row in rows)
+        {
             if (row.IsSelected)
-                selectedItems.Add(row.Item);
+                count++;
+        }
+        return count;
+    }
 
-        if (selectedItems.Count == 0)
+
+    // Update the () in the checkout text
+    void OnRowTicked(CartItemRows row)
+    {
+        UpdateTexts();
+    }
+
+
+    // Delete the row in the cart
+    void DeleteRow(CartItemRows row)
+    {
+        List<CartItem> itemsToRemove = new List<CartItem> { row.Item };
+        playerDataManager.Instance.RemoveCartItems(itemsToRemove, true);
+        // The list refreshes by itself because the cart changed
+    }
+
+
+    // When the player clicked the Checkout button
+    void CheckOut()
+    {
+        //Collect all the ticked photos
+        List<CartItem> tickedItems = new List<CartItem>();
+        foreach (CartItemRows row in rows)
+        {
+            if (row.IsSelected)
+                tickedItems.Add(row.Item);
+        }
+
+        if (tickedItems.Count == 0)
             return;
 
-        onCheckout?.Invoke(selectedItems);
+        //Remove them from the cart => saves to Firebase
+        playerDataManager.Instance.RemoveCartItems(tickedItems, true);
 
-        playerDataManager.Instance.RemoveCartItems(selectedItems, deleteImagesOnRemove);
+        //Show a message + remind the player of their promo codes
+        string message = "Checked out " + tickedItems.Count + " item(s)!";
 
-        if (popup != null)
+        List<string> codes = playerDataManager.Instance.Data.promoCodes;
+        if (codes.Count > 0)
         {
-            string message = string.Format(checkoutMessage, selectedItems.Count);
-
-            var codes = playerDataManager.Instance.Data.promoCodes;
-            if (codes.Count > 0)
-                message += "\n\n" + string.Format(promoReminder, string.Join(", ", codes));
-
-            popup.Show(message);
+            message += "\n\nYour promo codes: " + string.Join(", ", codes) +
+                       "\nUse them when you buy items at the Swee Lee shop!";
         }
+
+        popup.Show(message);
     }
 }

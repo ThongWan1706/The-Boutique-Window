@@ -7846,6 +7846,7 @@ GameObject:
   - component: {fileID: 533779710}
   - component: {fileID: 533779709}
   - component: {fileID: 533779708}
+  - component: {fileID: 533779711}
   m_Layer: 5
   m_Name: CartButton
   m_TagString: Untagged
@@ -7955,6 +7956,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533779706}
   m_CullTransparentMesh: 1
+--- !u!114 &533779711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533779706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406da9ab1fb9f844cb9432f953f19f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CartBadge
+  badge: {fileID: 0}
+  countText: {fileID: 0}
 --- !u!1 &536098660
 GameObject:
   m_ObjectHideFlags: 0
@@ -27917,6 +27932,10 @@ GameObject:
   - component: {fileID: 2099970466}
   - component: {fileID: 2099970472}
   - component: {fileID: 2099970471}
+  - component: {fileID: 2099970476}
+  - component: {fileID: 2099970475}
+  - component: {fileID: 2099970474}
+  - component: {fileID: 2099970473}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -28103,6 +28122,90 @@ MonoBehaviour:
     m_InputActionReference: {fileID: -7530398834462728267, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: {x: 0, y: 0}
+--- !u!114 &2099970473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099970465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578389b8576d46d4983847bc3cded09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PromoCodesPage
+  panel: {fileID: 0}
+  codesText: {fileID: 0}
+  emptyText: 'No promo codes yet.
+
+    Take photos of your setups to collect some!'
+  footer: '
+
+
+    Use these when you buy items at the Swee Lee shop.'
+--- !u!114 &2099970474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099970465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71180b813e6d6384682f565e9ddc9974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopupMessage
+  panel: {fileID: 0}
+  messageText: {fileID: 0}
+  okButton: {fileID: 0}
+--- !u!114 &2099970475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099970465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284dcc023ee637a43832832add9674ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneCapture
+  uiCanvas: {fileID: 0}
+  popup: {fileID: 0}
+  promoCodes:
+  - SWEELEE
+  - MYOWNSHOP
+  - MUSIC!
+--- !u!114 &2099970476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099970465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dff20960a4f3ea459845380ced45a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CartPage
+  panel: {fileID: 452958446}
+  titleText: {fileID: 164646403}
+  listContent: {fileID: 0}
+  rowPrefab: {fileID: 0}
+  emptyMessage: {fileID: 0}
+  selectAllToggle: {fileID: 0}
+  checkoutButton: {fileID: 1210090226}
+  checkoutButtonText: {fileID: 1985627753}
+  popup: {fileID: 0}
+  deleteImagesOnRemove: 1
+  checkoutMessage: Checked out {0} item(s)!
+  promoReminder: 'Your promo codes: {0}
+
+    Use them when you buy items at the Swee
+    Lee shop!'
+  onCheckout:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2116170431
 GameObject:
   m_ObjectHideFlags: 0

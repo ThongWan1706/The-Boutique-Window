@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 5736023286759432893}
   - component: {fileID: 3499592990213684220}
   - component: {fileID: 7796297254519864314}
+  - component: {fileID: 3988296960818022951}
   m_Layer: 5
   m_Name: CartItemRows
   m_TagString: Untagged
@@ -380,6 +381,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3988296960818022951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3574707744515091301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecd1ce2ed0a10a4891516c0dce7503d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CartItemRows
+  toggle: {fileID: 7187188900271508962}
+  thumbnail: {fileID: 8767844407509050693}
+  nameText: {fileID: 6027430266085415102}
+  itemsText: {fileID: 7636808705623796956}
+  deleteButton: {fileID: 7479559551029439792}
 --- !u!1 &3822524026159531918
 GameObject:
   m_ObjectHideFlags: 0
